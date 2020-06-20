@@ -49,7 +49,7 @@ public class Atest {
         ArrayList<Object> objects = new ArrayList<>();
         objects.add("string");
         Map<String, String> map1 = Collections.synchronizedMap(map);
-
+//qweqeqwqwe
 
     }
 }
