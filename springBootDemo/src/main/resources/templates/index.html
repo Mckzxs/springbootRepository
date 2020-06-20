@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <script src="js/vue.min.js"></script>
+    <script src="js/axios.min.js"></script>
+    <!--    <script src="js/jquery-1.12.4.min.js"></script>-->
+<!--    <script src="js/jquery-1.12.4.min.js"></script>-->
+</head>
+<body>
+<div id="app">
+<form id="server">
+    <table class="table table-striped" border="1" width="1000" align="center" cellspacing="0" cellpadding="5">
+        <tr>
+            <td>任职区域</td>
+            <td>
+                <input type="text" name="quyu" v-model="quyu">
+            </td>
+            <td>
+                <input type="checkbox" name="qyzengren" value="曾任">曾任
+            </td>
+            <td>
+                <input type="number" name="qynumber">-<input type="number" name="qynum" v-model="qynum">
+            </td>
+        </tr>
+        <tr>
+            <td>任职机构</td>
+            <td>
+                <input type="text" name="jigou" v-model="jigou">
+            </td>
+            <td>
+                <input type="checkbox" name="jgzengren" value="曾任" v-model="jgzengren">曾任
+            </td>
+        </tr>
+        <tr>
+            <td>职务</td>
+            <td>
+                <input type="text" name="zhiwu" v-model="zhiwu">
+            </td>
+            <td>
+                <input type="checkbox" name="zwzengren" value="曾任">曾任
+            </td>
+        </tr>
+        <tr>
+            <td>出生日期</td>
+            <td>
+                <input type="date" name="birthday" v-model="birthday">
+            </td>
+            <td>
+                <input type="radio" name="gender" value="男" checked="checked">男
+                <input type="radio" name="gender" value="女">女
+            </td>
+            <td>学历</td>
+            <td>
+                <select name="edu">
+                    <option>--请选择--</option>
+                    <option value="高中">高中</option>
+                    <option value="大专">大专</option>
+                    <option value="本科" selected="selected">本科</option>
+                    <option value="硕士">硕士</option>
+                </select>
+            </td>
+        </tr>
+        <tr align=center>
+            <td colspan="4">
+<!--                <input type="button" value="搜索" id="sousuo" v-on:click.prevent="selecteAll"/>-->
+                 <button @click.prevent="getDataFromServer">点击</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+
+
+<table class="table table-striped" border="1" width="1000" align="center" cellspacing="0" cellpadding="5">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>学生姓名</th>
+        <th>学生年龄</th>
+        <th>删除</th>
+        <th>修改</th>
+    </tr>
+    </thead>
+    <tbody id="tbody">
+    </tbody>
+</table>
+</div>
+</body>
+<script>
+
+// ---------------------------------------------
+  var  app = new Vue({
+      el:"#app",
+      data:{
+          qynum:"",
+          quyu:"",
+          jigou: "",
+          zhiwu:"",
+          birthday:"",
+          gender:"",
+          jgzengren:""
+      },
+      methods:{
+          // selecteAll(){
+          //     alert(1)
+          //     axios.get("/student/selectAll",{
+          //         params:{
+          //             quyu:this.quyu,
+          //             jigou: this.jigou,
+          //             zhiwu:this.zhiwu,
+          //             birthday:this.birthday
+          //         }
+          //     }).then(function(response){
+          //         console.log(response);
+          //     });
+          // },
+          getDataFromServer() {
+              alert(2)// 从服务的加载数的方法。
+              // 发起请求
+              axios.post("http://localhost:8080/student/selectAll",{
+
+                      quyu:this.quyu,
+                      jigou: this.jigou,
+                      zhiwu:this.zhiwu,
+                      birthday:this.birthday
+
+              }).then(resp=>{
+                  console.log(resp.data)
+              })
+
+
+              // axios.get("http://localhost:8080/student/selectAll", {
+              //     params: {
+              //         quyu:this.quyu,
+              //         jigou: this.jigou,
+              //         zhiwu:this.zhiwu,
+              //         birthday:this.birthday,
+              //         gender:this.gender
+              //     }
+              // }).then(resp => { // 这里使用箭头函数
+              //      console.log(resp)
+              // })
+          }
+      }
+  })
+</script>
+</html>

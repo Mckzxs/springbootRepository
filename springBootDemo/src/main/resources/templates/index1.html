@@ -1,0 +1,118 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>我的作业</title>
+</head>
+<style>
+    ul,
+    li {
+        list-style: none;
+        margin-bottom: 20px;
+    }
+    select {
+        width: 100px;
+    }
+    .ml30 {
+        margin-left: 50px;
+    }
+    #submit {
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        margin: 0 auto;
+        color: #fff;
+        cursor: pointer;
+        background-color: red;
+    }
+</style>
+<body>
+<form action="" id="formId">
+    <ul>
+        <li>
+            <label>任职区域</label>
+            <select name="province" id="province">
+                <option value="" disabled selected style="display:none;"
+                >请选择省</option
+                >
+                <option value="1">广东</option>
+            </select>
+            <select name="city" id="city">
+                <option value="" disabled selected style="display:none;"
+                >请选择市</option
+                >
+                <option value="2">广州</option>
+            </select>
+            <select name="area" id="area">
+                <option value="" disabled selected style="display:none;"
+                >请选择区</option
+                >
+                <option value="3">天河</option>
+            </select>
+
+            <radio class="ml30"></radio>
+            <label for="">曾任</label>
+            <input type="date" name="areaStart" id="areaStart" />--
+            <input type="date" name="areaEnd" id="areaEnd" />
+        </li>
+        <li>
+            <label for="">任职机构</label>
+            <input type="text" name="mechanism" id="mechanism" />
+
+            <radio class="ml30"></radio>
+            <label for="">曾任</label>
+            <input type="date" name="mechanismStart" id="mechanismStart" />--
+            <input type="date" name="mechanismEnd" id="mechanismEnd" />
+        </li>
+        <li>
+            <label for="">职务</label>
+            <input type="text" name="job" id="job" />
+
+            <radio class="ml30"></radio>
+            <label for="">曾任</label>
+            <input type="date" name="jobStart" id="jobStart" />--
+            <input type="date" name="jobEnd" id="jobEnd" />
+        </li>
+        <li>
+            <label for="">出生日期</label>
+            <input type="date" name="ageStart" id="ageStart" />--
+            <input type="date" name="ageEnd" id="ageEnd" />
+
+            <select name="sex" id="sex" class="ml30">
+                <option value="" disabled selected style="display:none;"
+                >性别</option
+                >
+                <option value="1">男</option>
+            </select>
+            <select name="Education" id="Education">
+                <option value="" disabled selected style="display:none;"
+                >学历</option
+                >
+                <option value="1">本科</option>
+            </select>
+            <select name="degree" id="degree">
+                <option value="" disabled selected style="display:none;"
+                >学位</option
+                >
+                <option value="1">学士</option>
+            </select>
+        </li>
+    </ul>
+    <div id="submit">搜索</div>
+</form>
+</body>
+<script src="js/jquery.js"></script>
+<script>
+    $(function() {
+        $("#submit").on("click", function() {
+            var fomrdata = $("#formId").serialize() //form表单的值
+            // 调用接口
+            $ajax({
+                url: "",
+                data: fomrdata,
+                success: function() {}
+            })
+        })
+    })
+</script>
+</html>
